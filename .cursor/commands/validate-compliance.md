@@ -3,6 +3,9 @@
 ## Overview
 
 Help validate the current code context against compliance requirements (SOC 2, ISO 27001, NIST, GDPR, HIPAA, PCI DSS). Identify gaps, validate controls, and provide remediation guidance.
+If specified, use the provided links for specific compliance instructions.
+
+## Compliance links
 
 ## Steps
 

@@ -35,10 +35,25 @@ results, and inserts the selected command into the chat ready to run.
 2. Select from the available security commands
 3. Let the AI execute the prompt with the relevant project context
 
+## Available Commands
+
+This repository includes the following security commands:
+
+- **`create-secure-template.md`** - Generate secure code templates with security best practices
+- **`create-security-tests.md`** - Create security test cases and validation scripts
+- **`create-threat-model.md`** - Generate threat models for applications and systems
+- **`explain-ai-threats.md`** - Explain AI-specific security threats and mitigations
+- **`gate-critical-vulns.md`** - Set up CI/CD checks to block critical vulnerabilities
+- **`harden-dockerfile-fips.md`** - Make Dockerfiles FIPS compliant with security hardening
+- **`prevent-exploitable-vulns.md`** - Block CISA Known Exploited Vulnerabilities (KEV) in CI/CD
+- **`review-api-auth.md`** - Review and add authentication to API endpoints
+- **`security-remediation.md`** - Scan and fix high-impact vulnerabilities in the codebase
+- **`validate-compliance.md`** - Validate compliance with security frameworks and standards
+
 ## Creating commands
 
 - Create a `.cursor/commands` directory in your project root
-- Add `.md` files with descriptive names (for example, `fix-vuln.md`, `validate-compliance.md`)
+- Add `.md` files with descriptive names (for example, `gate-critical-vulns.md`, `validate-compliance.md`)
 - Write clear Markdown instructions describing what the command should accomplish
 - Open Cursor, type `/`, and choose your new command to execute it immediately
 
@@ -47,16 +62,15 @@ Example structure:
 ```text
 .cursor/
 └── commands/
-    ├── create-evidence.md
-    ├── create-least-privilege.md
     ├── create-secure-template.md
     ├── create-security-tests.md
     ├── create-threat-model.md
     ├── explain-ai-threats.md
-    ├── explain-risk.md
-    ├── fix-vuln.md
-    ├── harden-config.md
-    ├── trace-secret.md
+    ├── gate-critical-vulns.md
+    ├── harden-dockerfile-fips.md
+    ├── prevent-exploitable-vulns.md
+    ├── review-api-auth.md
+    ├── security-remediation.md
     └── validate-compliance.md
 ```
 
