@@ -12,12 +12,12 @@ tasks, reinforce team standards, and keep feedback consistent.
 
 ## Features
 
-- **🚀 Quick access**: Type `/` to surface every command without leaving your flow
-- **🔄 Reusable**: Standardize security prompts for common tasks across the whole team
-- **👥 Shareable**: Store commands in git so they ship with your repository
-- **🎯 Focused**: Each command targets a specific security workflow with clear structure
-- **🔒 Security-first**: Built-in security best practices and compliance validation
-- **📝 Customizable**: Edit or extend the Markdown files to match your processes
+- ** Quick access**: Type `/` to surface every command without leaving your flow
+- ** Reusable**: Standardize security prompts for common tasks across the whole team
+- ** Shareable**: Store commands in git so they ship with your repository
+- ** Focused**: Each command targets a specific security workflow with clear structure
+- ** Security-first**: Built-in security best practices and compliance validation
+- ** Customizable**: Edit or extend the Markdown files to match your processes
 
 ## How commands work
 
