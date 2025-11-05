@@ -3,16 +3,16 @@
 ## Overview
 
 Help validate the current code context against compliance requirements (SOC 2, ISO 27001, NIST, GDPR, HIPAA, PCI DSS). Identify gaps, validate controls, and provide remediation guidance.
-If specified, use the provided links for specific compliance instructions.
 
 ## Compliance links
 
 ## Steps
 
-1. **Compliance Framework Identification**
+1. **use the provided links - Compliance links for specific compliance instructions**
+2. **Compliance Framework Identification**
     - Identify applicable frameworks: SOC 2, ISO 27001, NIST CSF, GDPR, HIPAA, PCI DSS, FedRAMP, CCPA, CIS Controls
     - Understand application type, data types, deployment environment, and geographic scope
-2. **Compliance Control Validation**
+3. **Compliance Control Validation**
     - Check access control (MFA, RBAC, least privilege, session management)
     - Encryption (HTTPS/TLS, data at rest, key management)
     - Logging (security events, audit trails, retention)
@@ -21,10 +21,10 @@ If specified, use the provided links for specific compliance instructions.
     - Data privacy (data minimization, consent, PII handling)
     - Incident response (detection, response plan, escalation)
     - Business continuity (backups, recovery procedures)
-3. **Code Context Analysis**
+4. **Code Context Analysis**
     - Analyze authentication, authorization, encryption, logging, configuration, error handling, input validation, session management, and secret management
     - Compare against requirements and identify missing controls, inadequate controls, misconfigured controls, and non-compliant code
-4. **Compliance Validation Report**
+5. **Compliance Validation Report**
     - Provide executive summary (status, findings count, compliance score, recommendations)
     - Framework-specific validation (control status, evidence, gaps, recommendations)
     - Detailed findings (severity, location, impact, remediation steps)
