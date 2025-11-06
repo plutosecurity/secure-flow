@@ -45,7 +45,7 @@ This repository includes the following security commands:
 - **`explain-ai-threats.md`** - Explain AI-specific security threats and mitigations
 - **`gate-critical-vulns.md`** - Set up CI/CD checks to block critical vulnerabilities
 - **`harden-dockerfile-fips.md`** - Make Dockerfiles FIPS compliant with security hardening
-- **`prevent-exploitable-vulns.md`** - Block CISA Known Exploited Vulnerabilities (KEV) in CI/CD
+- **`fix-exploitable-vulns.md`** - Fix CISA Known Exploited Vulnerabilities (KEV) found in your codebase
 - **`review-api-auth.md`** - Review and add authentication to API endpoints
 - **`security-remediation.md`** - Scan and fix high-impact vulnerabilities in the codebase
 - **`validate-compliance.md`** - Validate compliance with security frameworks and standards
@@ -68,7 +68,7 @@ Example structure:
     ├── explain-ai-threats.md
     ├── gate-critical-vulns.md
     ├── harden-dockerfile-fips.md
-    ├── prevent-exploitable-vulns.md
+    ├── fix-exploitable-vulns.md
     ├── review-api-auth.md
     ├── security-remediation.md
     └── validate-compliance.md
