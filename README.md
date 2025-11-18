@@ -4,6 +4,10 @@ Securing Open Source License: Apache 2.0
 
 This project is an AI model-agnostic security framework that embeds secure-by-default practices into AI coding workflows (generation and review). It ships security workflows, translators for popular coding agents and IDEs, and validators to test workflow compliance.
 
+## CLI Tool
+
+Secure Flow includes a powerful command-line interface (CLI) for managing and executing security rules. The CLI allows you to list all existing rules, create new rules with LLM assistance using your codebase context, validate all rule files for proper structure, and run specific rules manually. The CLI is organized into modular components and uses argparse for a clean, developer-friendly interface. See the [CLI documentation](cli/README.md) for detailed usage instructions.
+
 ## Why Secure Flow?
 
 AI coding agents accelerate development, but security policies often lag behind. Are your security practices keeping pace with rapid code generation?
