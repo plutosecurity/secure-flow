@@ -1,161 +1,226 @@
-# Cursor Secure Commands
+# Secure Flow: Security Workflows for AI Coding Agents
 
-A curated collection of Cursor slash-command prompts focused on security workflows. These commands help your team implement security best practices, validate compliance, and maintain secure code directly inside the Cursor IDE.
+Securing Open Source License: Apache 2.0
 
-## What are Cursor Commands?
+This project is an AI model-agnostic security framework that embeds secure-by-default practices into AI coding workflows (generation and review). It ships security workflows, translators for popular coding agents and IDEs, and validators to test workflow compliance.
 
-Cursor Commands are reusable AI prompts saved as Markdown files in
-`.cursor/commands/`. When you type `/` in Cursor's chat input, the IDE lists
-every command from your project and your global library so you can insert the
-prompt instantly. They act like AI-driven shortcuts that automate repetitive
-tasks, reinforce team standards, and keep feedback consistent.
+## Why Secure Flow?
 
-## Features
+AI coding agents accelerate development, but security policies often lag behind. Are your security practices keeping pace with rapid code generation?
 
-- ** Quick access**: Type `/` to surface every command without leaving your flow
-- ** Reusable**: Standardize security prompts for common tasks across the whole team
-- ** Shareable**: Store commands in git so they ship with your repository
-- ** Focused**: Each command targets a specific security workflow with clear structure
-- ** Security-first**: Built-in security best practices and compliance validation
-- ** Customizable**: Edit or extend the Markdown files to match your processes
+❌ Security documentation that's outdated the moment it's written
 
-## How commands work
+❌ Compliance requirements that drift as standards evolve
 
-Commands can live in two places:
+❌ Manual security reviews that can't scale with AI-generated code
 
-- Project commands: Store Markdown files in `.cursor/commands` inside your repository
-- Global commands: Store personal commands in `~/.cursor/commands` on your machine
+❌ Inconsistent security practices across teams and projects
 
-Cursor automatically scans both directories when you type `/`, combines the
-results, and inserts the selected command into the chat ready to run.
+❌ Security tools that require context switching and break developer flow
 
-## How to use
+❌ Policies that exist in wikis but never make it into actual code
+
+Secure Flow solves this by turning security policies into executable workflows that developers use directly in their IDE, with real-time updates from trusted sources.
+
+## During and After Code Generation
+
+Secure Flow is designed to integrate seamlessly across the entire AI coding lifecycle.
+
+**Before code generation**, workflows can be used for the design of a product and for spec-driven development. You can use the workflows in the "planning phase" of an AI coding agent to steer models toward secure patterns from the start.
+
+**During code generation**, workflows help AI agents prevent security issues as code is being written.
+
+**After code generation**, AI agents like Cursor, GitHub Copilot, Claude Code, Windsurf, and other IDE assistants can use the workflows for code review and remediation.
+
+## Security Coverage
+
+Our workflows address critical security challenges across the development lifecycle:
+
+🔐 **Cryptography & Secrets**: Post-quantum algorithms, secure key rotation, certificate pinning, secrets management
+
+🛡️ **Vulnerability Management**: CISA KEV remediation, dependency scanning, exploit prevention, patch prioritization
+
+🔑 **Access Control**: Multi-factor authentication, OAuth flows, session security, privilege escalation prevention
+
+⚡ **Compliance Automation**: SOC 2, ISO 27001, HIPAA, PCI DSS validation, audit trail generation
+
+📦 **Infrastructure Security**: Container hardening, FIPS compliance, Kubernetes security, IaC validation
+
+☁️ **API & Service Security**: Authentication review, rate limiting, input sanitization, secure defaults
+
+📱 **Threat Modeling**: Attack surface analysis, risk assessment, security architecture review
+
+🔍 **Remediation & Testing**: Automated fixes, security test generation, vulnerability triage, compliance gap analysis
+
+## Quick Start
+
+Get started in minutes:
+
+1. **Download the workflows** from our releases page or clone this repository
+2. **Copy to your project** - Place IDE-specific workflows in your repository
+3. **Start coding** - AI assistants will automatically follow security best practices
+
+Additional details in the [Get Started](#installation) section →
+
+## How It Works
+
+At Pluto Security, we've been researching how this feature can go far beyond productivity - into secure development and compliance automation.
+
+We treat `.cursor/commands` (and similar IDE workflow directories) as a **policy execution layer**: a way to define repeatable, reviewable, and context-aware actions that developers can trigger at any time.
+
+We designed workflows for repeatable security tasks that developers can run directly in their workflow - each workflow can fetch live data from trusted internet sources (official docs, advisories, best-practice repositories) to stay always up-to-date.
+
+### The Policy Execution Layer
+
+Security workflows are written in unified markdown format (`sources/` directory)
+
+Conversion tools translate workflows to IDE-specific formats (Cursor commands, Claude skills, Copilot, etc.)
+
+Release automation packages workflows into downloadable ZIP files
+
+AI assistants reference these workflows when generating or reviewing code
+
+Secure code is produced automatically without developer intervention
+
+### Real-Time Policy Updates
+
+The best part? You can plug in your own stack:
+
+- **Compliance SaaS platforms** (SOC 2, ISO 27001, HIPAA, CAIQ Lite)
+- **Internal security documentation** or wikis
+- **CLI Tools** (Snyk / Trivy / AWS CLI)
+- **Scripts** (Python, Bash, or any executable)
+
+Each workflow execution can automatically:
+- Pull the most recent guidance from trusted sources (to ensure alignment with the latest policies, standards, and compliance frameworks)
+- Run your own custom CLI commands
+- Execute pre-made Python scripts in the right context
+
+This means developers use simple, reusable workflows created by security teams - but those workflows evolve in real time, keeping code and compliance aligned.
+
+## Repository Structure
+
+```
+sources/           # Source workflows (unified markdown format)
+.cursor/           # Cursor IDE commands (generated, committed)
+claude-skills/     # Claude Code skills (generated, committed)
+src/               # Conversion and validation tools
+dist/              # Other IDE bundles (generated, not committed)
+```
+
+## Installation
+
+### Option 1: Clone the Repository
+
+```bash
+git clone https://github.com/plutosecurity/secure-flow.git
+cd secure-flow
+```
+
+### Option 2: Copy Workflows into Existing Project
+
+```bash
+# For Cursor IDE
+cp -r secure-flow/.cursor /path/to/your/project/
+
+# For Claude Code
+cp -r secure-flow/claude-skills /path/to/your/project/
+```
+
+### Option 3: Manual Setup
+
+1. Create the appropriate directory in your project root:
+   - `.cursor/commands/` for Cursor IDE
+   - `claude-skills/` for Claude Code
+   - Or other IDE-specific locations
+2. Copy or author the workflow files you need
+
+## Available Workflows
+
+This repository includes the following security workflows:
+
+- **`create-secure-template`** - Generate secure code templates with security best practices
+- **`create-security-tests`** - Create security test cases and validation scripts
+- **`create-threat-model`** - Generate threat models for applications and systems
+- **`explain-ai-threats`** - Explain AI-specific security threats and mitigations
+- **`gate-critical-vulns`** - Set up CI/CD checks to block critical vulnerabilities
+- **`harden-dockerfile-fips`** - Make Dockerfiles FIPS compliant with security hardening
+- **`fix-exploitable-vulns`** - Fix CISA Known Exploited Vulnerabilities (KEV) found in your codebase
+- **`review-api-auth`** - Review and add authentication to API endpoints
+- **`security-remediation`** - Scan and fix high-impact vulnerabilities in the codebase
+- **`validate-compliance`** - Validate compliance with security frameworks and standards
+
+## IDE-Specific Usage
+
+### Cursor IDE
 
 1. Type `/` in Cursor's AI chat or agent input
-2. Select from the available security commands
-3. Let the AI execute the prompt with the relevant project context
+2. Select from the available security workflows
+3. Let the AI execute the workflow with the relevant project context
 
-## Available Commands
+Workflows are stored in `.cursor/commands/` as Markdown files.
 
-This repository includes the following security commands:
+### Claude Code
 
-- **`create-secure-template.md`** - Generate secure code templates with security best practices
-- **`create-security-tests.md`** - Create security test cases and validation scripts
-- **`create-threat-model.md`** - Generate threat models for applications and systems
-- **`explain-ai-threats.md`** - Explain AI-specific security threats and mitigations
-- **`gate-critical-vulns.md`** - Set up CI/CD checks to block critical vulnerabilities
-- **`harden-dockerfile-fips.md`** - Make Dockerfiles FIPS compliant with security hardening
-- **`fix-exploitable-vulns.md`** - Fix CISA Known Exploited Vulnerabilities (KEV) found in your codebase
-- **`review-api-auth.md`** - Review and add authentication to API endpoints
-- **`security-remediation.md`** - Scan and fix high-impact vulnerabilities in the codebase
-- **`validate-compliance.md`** - Validate compliance with security frameworks and standards
+1. Import skills from the `claude-skills/` directory
+2. Activate skills in Claude Code settings
+3. Use skills during code generation and review
 
-## Creating commands
+### Other IDEs
 
-- Create a `.cursor/commands` directory in your project root
-- Add `.md` files with descriptive names (for example, `gate-critical-vulns.md`, `validate-compliance.md`)
-- Write clear Markdown instructions describing what the command should accomplish
-- Open Cursor, type `/`, and choose your new command to execute it immediately
+Workflows can be adapted for:
+- GitHub Copilot
+- Windsurf
+- Codeium
+- Other AI-powered IDEs
 
-Example structure:
-
-```text
-.cursor/
-└── commands/
-    ├── create-secure-template.md
-    ├── create-security-tests.md
-    ├── create-threat-model.md
-    ├── explain-ai-threats.md
-    ├── gate-critical-vulns.md
-    ├── harden-dockerfile-fips.md
-    ├── fix-exploitable-vulns.md
-    ├── review-api-auth.md
-    ├── security-remediation.md
-    └── validate-compliance.md
-```
-
-## Quick start
-
-1. Clone this repository or copy the `.cursor/commands/` directory into your project
-2. Open the project in Cursor IDE
-3. Type `/` in the AI chat to browse available security commands
-4. Select a command and let Cursor execute the prompt with your code context
-
-## Installation options
+## For Developers
 
 ```bash
-# Option 1: clone the repository
-git clone https://github.com/your-org/cursor-secure-commands.git
-cd cursor-secure-commands
+git clone https://github.com/plutosecurity/secure-flow.git && cd secure-flow
+
+# Validate workflows
+python src/validate_unified_workflows.py sources/
+
+# Generate IDE-specific formats
+python src/convert_to_ide_formats.py
+
+# More options
+python src/convert_to_ide_formats.py --help
 ```
 
-```bash
-# Option 2: copy commands into an existing project
-cp -r cursor-secure-commands/.cursor /path/to/your/project/
-```
+Maintainers: See `CONTRIBUTING.md` for release process.
 
-Alternatively, create the directory manually:
+## Workflow Structure
 
-1. Create `.cursor/commands/` in your project root
-2. Copy or author the Markdown command files you need
+All workflows follow a consistent format for clarity and consistency:
 
-## Writing your own commands
-
-Use the existing files as templates or start from scratch. All commands follow a consistent structure:
-
-```bash
-touch .cursor/commands/my-security-command.md
-```
-
-```markdown
-# My Security Command
-
-## Overview
-
-Brief description of what this command does.
-
-## Steps
-
-1. **Step Title**
-    - Detailed explanation
-    - Sub-points and requirements
-2. **Next Step**
-    - Additional instructions
-    - Implementation details
-
-## My Security Command Checklist
-
-- [ ] Checklist item 1
-- [ ] Checklist item 2
-- [ ] Checklist item 3
-```
-
-## Command Structure
-
-All commands follow a consistent format for clarity and consistency:
-
-- **Title**: Clear command name as heading
-- **Overview**: Brief description of the command's purpose
+- **Title**: Clear workflow name as heading
+- **Overview**: Brief description of the workflow's purpose
 - **Steps**: Numbered steps with detailed sub-bullets
 - **Checklist**: Checkbox list to track completion
 
-## Best practices
+## Best Practices
 
 - **Be specific**: Describe the expected outcome and acceptance criteria
 - **Provide context**: Reference security frameworks, compliance standards, or architecture
 - **Set boundaries**: Clarify scope, assumptions, and tooling limits
 - **Include examples**: Show expected formats or responses when helpful
-- **Stay focused**: Keep each command targeted to a single, clear security objective
-- **Review together**: Treat command changes like code changes and review in PRs
-- **Use descriptive names**: Make filenames reflect the command's security purpose
+- **Stay focused**: Keep each workflow targeted to a single, clear security objective
+- **Review together**: Treat workflow changes like code changes and review in PRs
+- **Use descriptive names**: Make filenames reflect the workflow's security purpose
 - **Follow security frameworks**: Reference OWASP, NIST, CWE, or compliance standards where relevant
 
-## Support
+## Community
 
-- Open an [issue](https://github.com/plutosecurity/cursor-secure-commands/issues) for feedback or requests
-- Refer to this README for the command index that ships with the prompts
+📋 **Issues**: Report bugs or request features
 
-## License
+💬 **Discussions**: Join the conversation
 
-This project is open source and available under the [MIT License](LICENSE).
+🤝 **Contributing**: Learn how to contribute
 
+## Licensing
+
+This project is open source and available under the [Apache License 2.0](LICENSE).
+
+Copyright © 2025 Pluto Security
