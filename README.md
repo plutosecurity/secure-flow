@@ -40,11 +40,11 @@ Secure Flow is designed to integrate seamlessly across the entire AI coding life
 
 Our workflows address critical security challenges across the development lifecycle:
 
-🔐 **Cryptography & Secrets**: Post-quantum algorithms, secure key rotation, certificate pinning, secrets management
+🔐 **Cryptography & Secrets**: Secure key rotation, secrets management
 
 🛡️ **Vulnerability Management**: CISA KEV remediation, dependency scanning, exploit prevention, patch prioritization
 
-🔑 **Access Control**: Multi-factor authentication, OAuth flows, session security, privilege escalation prevention
+🔑 **Access Control**: Multi-factor authentication, Session security, Least Access Prevention
 
 ⚡ **Compliance Automation**: SOC 2, ISO 27001, HIPAA, PCI DSS validation, audit trail generation
 
