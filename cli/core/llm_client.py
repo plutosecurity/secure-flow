@@ -146,6 +146,52 @@ Return ONLY the complete markdown file content, starting with the frontmatter.""
             )
             return response.choices[0].message.content
     
+    def generate_cursor_command(self, rule_content: str, rule_name: str) -> str:
+        """Generate a cursor command file from rule content using LLM"""
+        
+        prompt = f"""You are creating a Cursor IDE command file for a Secure Flow security rule.
+
+Rule Name: {rule_name}
+
+## Full Rule Content:
+{rule_content}
+
+Create a Cursor command file that extracts and formats the key information from this rule. The file should follow this exact structure:
+
+1. Title as H1 heading (extract from the rule title, convert to readable format)
+2. Overview section (## Overview) with a brief description of what this rule does
+3. Steps section (## Steps) with numbered steps extracted from the Implementation section:
+   - Each step should have a bold section title followed by bullet points
+   - Format: **Section Title**\n    - Step description
+   - Extract all meaningful implementation steps from H3/H4 sections
+4. Checklist section (## [Rule Name] Checklist) with all checklist items from the rule:
+   - Format: - [ ] Checklist item text
+
+The cursor command should be concise, actionable, and easy to follow. Focus on the practical steps a developer would need to implement this security rule.
+
+Return ONLY the complete markdown file content, without any code block wrappers."""
+        
+        if self.provider == "anthropic":
+            message = self.client.messages.create(
+                model="claude-3-5-sonnet-20241022",
+                max_tokens=4096,
+                messages=[{
+                    "role": "user",
+                    "content": prompt
+                }]
+            )
+            return message.content[0].text
+        else:  # openai
+            response = self.client.chat.completions.create(
+                model="gpt-4",
+                messages=[{
+                    "role": "user",
+                    "content": prompt
+                }],
+                max_tokens=4096
+            )
+            return response.choices[0].message.content
+    
     def _make_api_call(self, prompt: str, max_tokens: int) -> str:
         """Make a single API call to the LLM"""
         if self.provider == "anthropic":
