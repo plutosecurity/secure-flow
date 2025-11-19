@@ -5,7 +5,7 @@ import sys
 from pathlib import Path
 from typing import List, Optional
 
-from ..core.config import RULES_DIR
+from ..core.config import CURSOR_COMMANDS_DIR, RULES_DIR
 from ..core.llm_client import LLMClient
 
 
@@ -66,8 +66,45 @@ def create_rule(
     try:
         output_path.write_text(rule_content)
         print(f"✅ Rule created successfully: {output_path}")
-        return 0
     except Exception as e:
         print(f"Error writing rule file: {e}", file=sys.stderr)
         return 1
+    
+    # Generate and write cursor command file
+    try:
+        print(f"Generating cursor command file using {provider}...")
+        
+        # Determine cursor command filename - use the same name as the rule file that was created
+        rule_filename = output_path.stem  # Get filename without extension
+        cursor_command_name = rule_filename  # Use the same name as the rule file
+        
+        cursor_command_path = CURSOR_COMMANDS_DIR / f"{cursor_command_name}.md"
+        
+        # Ensure cursor commands directory exists
+        CURSOR_COMMANDS_DIR.mkdir(parents=True, exist_ok=True)
+        
+        # Generate cursor command content using AI
+        cursor_command_content = llm.generate_cursor_command(rule_content, rule_name)
+        
+        # Remove markdown code block wrapper if present
+        content = cursor_command_content.strip()
+        if content.startswith('```markdown'):
+            content = content[11:]  # Remove ```markdown
+        elif content.startswith('```'):
+            content = content[3:]  # Remove ```
+        
+        # Remove trailing ```
+        if content.endswith('```'):
+            content = content[:-3]
+        
+        cursor_command_content = content.strip()
+        
+        # Write cursor command file
+        cursor_command_path.write_text(cursor_command_content)
+        print(f"✅ Cursor command created successfully: {cursor_command_path}")
+        return 0
+    except Exception as e:
+        print(f"Warning: Error creating cursor command file: {e}", file=sys.stderr)
+        # Don't fail the whole operation if cursor command creation fails
+        return 0
 
